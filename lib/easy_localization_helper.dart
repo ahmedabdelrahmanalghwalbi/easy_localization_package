@@ -8,7 +8,7 @@ import 'package:alghwalbi_easy_localization/src/utils/utils.dart';
 //extension to make use of the translate method in simple, profissional way.
 extension TransEx on String {
   String trans(BuildContext context) {
-    return AppLocalizations.of(context)!.translate(key: this);
+    return AppLocalizations.of(context)?.translate(key: this) ?? this;
   }
 }
 

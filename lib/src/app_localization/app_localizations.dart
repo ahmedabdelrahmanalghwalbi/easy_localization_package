@@ -54,11 +54,11 @@ class _AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationDelegate();
   @override
   bool isSupported(Locale locale) {
-    return ((AppLocalizations.supportedLocales
-                ?.map((e) => e.languageCode)
-                .toList())
-            ?.contains(locale.languageCode)) ??
-        false;
+    // Check if the locale's language code is supported
+    return (((AppLocalizations.supportedLocales?.map((e) => e.languageCode))
+                ?.contains(locale.languageCode)) ??
+            false) ||
+        (locale.languageCode == 'ar');
   }
 
   @override
@@ -70,8 +70,7 @@ class _AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {
 
   @override
   bool shouldReload(covariant LocalizationsDelegate<AppLocalizations> old) {
-    // its mean that Localization Delegate will load all files when any build happed to application or not
-    //alwayes set it false
+    // Set it to true if you want to force a reload of the localized resources
     return false;
   }
 }
